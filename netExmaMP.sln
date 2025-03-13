@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "netExmaMP", "netExmaMP\netExmaMP.csproj", "{A0D77784-DDC1-4C3B-A1D8-05F1A062A763}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "netExmaMP", "netExmaMP\netExmaMP.csproj", "{A0D77784-DDC1-4C3B-A1D8-05F1A062A763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Styles", "Styles\Styles.csproj", "{54A40DD0-C5ED-4BB6-8A97-8C6420918958}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{A0D77784-DDC1-4C3B-A1D8-05F1A062A763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0D77784-DDC1-4C3B-A1D8-05F1A062A763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0D77784-DDC1-4C3B-A1D8-05F1A062A763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54A40DD0-C5ED-4BB6-8A97-8C6420918958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A40DD0-C5ED-4BB6-8A97-8C6420918958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A40DD0-C5ED-4BB6-8A97-8C6420918958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A40DD0-C5ED-4BB6-8A97-8C6420918958}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64A92242-4248-4F26-B89A-57D17526F664}
 	EndGlobalSection
 EndGlobal
