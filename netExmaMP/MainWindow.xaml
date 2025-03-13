@@ -7,6 +7,66 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Menu IsMainMenu="True">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Click="OpenFile_Click"/>
+            </MenuItem>
+        </Menu>
+        <Expander Grid.Row="1" ExpandDirection="Right">
 
+        </Expander>
+        <GridSplitter VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Gray" Width="2"/>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Rectangle x:Name="DrawingRect"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="TimeTB" TextChanged="TimeTB_TextInput"/>
+                <Label Grid.Column="1" x:Name="MaxTimeLabel"/>
+                <Slider Grid.Column="2" x:Name="TimelaneSlider" Thumb.DragStarted="TimelaneSlider_DragStarted" Thumb.DragCompleted="TimelaneSlider_DragCompleted"/>
+            </Grid>
+        </Grid>
+        <GridSplitter HorizontalAlignment="Stretch" Grid.Row="2" Grid.ColumnSpan="3" Background="Gray" Height="2"/>
+        <Grid Grid.Row="3" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="SpeedCB" Margin="7" Width="64" HorizontalAlignment="Left" ItemsSource="{Binding Speeds}"/>
+            <ToggleButton x:Name="LoopTBtn" Grid.Column="1" Margin="7" IsThreeState="True" Click="LoopTBtn_Click"/>
+            <Button x:Name="BackBtn" Grid.Column="2" Margin="5" Click="BackBtn_Click"/>
+            <ToggleButton x:Name="PausePlayTBtn" Grid.Column="3" Margin="3" Click="PausePlayTBtn_Click"/>
+            <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Click="NextBtn_Click"/>
+            <Button x:Name="ShuffleBtn" Grid.Column="5" Margin="7" Click="ShuffleBtn_Click"/>
+            <ToggleButton x:Name="VolumeTBtn" Grid.Column="6" Margin="3,3,15,3" HorizontalAlignment="Right"
+                          Width="{Binding ElementName=VolumeTBtn, Path=ActualHeight}"
+                          Click="VolumeTBtn_Click" MouseEnter="VolumeTBtn_MouseEnter"/>
+            <Popup x:Name="VolumePopup" StaysOpen="False" PlacementTarget="{Binding ElementName=VolumeTBtn}" Placement="Top" Height="80" Width="{Binding ElementName=VolumeTBtn, Path=ActualWidth}">
+                <Slider x:Name="VolumeSlider" Orientation="Vertical" Maximum="100" ValueChanged="VolumeSlider_ValueChanged"/>
+            </Popup>
+        </Grid>
     </Grid>
 </Window>
