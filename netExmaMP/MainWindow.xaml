@@ -10,7 +10,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="42*"/>
+            <ColumnDefinition Width="341*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,16 +19,16 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Menu IsMainMenu="True">
+        <Menu IsMainMenu="True" Grid.ColumnSpan="2" Margin="0,0,2,378" Grid.RowSpan="2">
             <MenuItem Header="File">
                 <MenuItem Header="Open" Click="OpenFile_Click"/>
             </MenuItem>
         </Menu>
-        <Expander Grid.Row="1" ExpandDirection="Right">
+        <Expander Grid.Row="1" ExpandDirection="Right" Grid.ColumnSpan="2" Margin="0,0,2,0">
 
         </Expander>
-        <GridSplitter VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Gray" Width="2"/>
-        <Grid Grid.Column="2" Grid.Row="1">
+        <GridSplitter Grid.Row="1" Grid.Column="1" Background="Gray" Width="2" HorizontalAlignment="Center"/>
+        <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="auto"/>
@@ -44,8 +45,8 @@
                 <Slider Grid.Column="2" x:Name="TimelaneSlider" Thumb.DragStarted="TimelaneSlider_DragStarted" Thumb.DragCompleted="TimelaneSlider_DragCompleted"/>
             </Grid>
         </Grid>
-        <GridSplitter HorizontalAlignment="Stretch" Grid.Row="2" Grid.ColumnSpan="3" Background="Gray" Height="2"/>
-        <Grid Grid.Row="3" Grid.ColumnSpan="3">
+        <GridSplitter HorizontalAlignment="Stretch" Grid.Row="1" Grid.ColumnSpan="4" Background="Gray" Height="2" Margin="0,378,0,0" Grid.RowSpan="2"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="4" Margin="0,2,0,0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
@@ -59,6 +60,13 @@
             <ToggleButton x:Name="LoopTBtn" Grid.Column="1" Margin="7" IsThreeState="True" Click="LoopTBtn_Click"/>
             <Button x:Name="BackBtn" Grid.Column="2" Margin="5" Click="BackBtn_Click"/>
             <ToggleButton x:Name="PausePlayTBtn" Grid.Column="3" Margin="3" Click="PausePlayTBtn_Click"/>
+            <!--
+            <ToggleButton.ContentTemplate>
+                <DataTemplate>
+                    <Image Source="PlayButton.png"/>
+                </DataTemplate>
+            </ToggleButton.ContentTemplate>
+            -->
             <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Click="NextBtn_Click"/>
             <Button x:Name="ShuffleBtn" Grid.Column="5" Margin="7" Click="ShuffleBtn_Click"/>
             <ToggleButton x:Name="VolumeTBtn" Grid.Column="6" Margin="3,3,15,3" HorizontalAlignment="Right"

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "netExmaMP", "netExmaMP\netExmaMP.csproj", "{A0D77784-DDC1-4C3B-A1D8-05F1A062A763}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Styles", "Styles\Styles.csproj", "{54A40DD0-C5ED-4BB6-8A97-8C6420918958}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Styles", "Styles\Styles.csproj", "{54A40DD0-C5ED-4BB6-8A97-8C6420918958}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{CBBEBEE0-21B9-412B-8B16-F9EF56BE2A10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
