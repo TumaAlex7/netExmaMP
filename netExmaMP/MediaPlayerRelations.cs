@@ -23,8 +23,20 @@ namespace netExmaMP
         private void OpenMediaFile(Uri uri)
         {
             player.Open(uri);
-            PausePlayTBtn.IsChecked = true;
+            PlayPauseTBtn.IsChecked = true;
             TimeTB.IsReadOnly = true;
+        }
+
+        private void Play()
+        {
+            player.Play();
+            timer.Start();
+        }
+
+        private void Pause()
+        {
+            player.Pause();
+            timer.Stop();
         }
 
         private void Player_MediaOpened(object? sender, EventArgs e)
@@ -33,8 +45,7 @@ namespace netExmaMP
             TimelaneSlider.Value = 0;
             TimelaneSlider.Maximum = player.NaturalDuration.TimeSpan.TotalSeconds;
             MaxTimeLabel.Content = player.NaturalDuration.TimeSpan.ToString(@"hh\:mm\:ss");
-            timer.Start();
-            player.Play();
+            Play();
         }
 
         private void Player_MediaEnded(object? sender, EventArgs e)
@@ -63,19 +74,17 @@ namespace netExmaMP
 
         }
 
-        private void PausePlayTBtn_Click(object sender, RoutedEventArgs e)
+        private void PlayPauseTBtn_Click(object sender, RoutedEventArgs e)
         {
-            switch (PausePlayTBtn.IsChecked)
+            switch (PlayPauseTBtn.IsChecked)
             {
                 case true:
                     TimeTB.IsReadOnly = true;
-                    player.Play();
-                    timer.Start();
+                    Play();
                     break;
                 case false:
                     TimeTB.IsReadOnly = false;
-                    player.Pause();
-                    timer.Stop();
+                    Pause();
                     break;
             }
         }
@@ -129,15 +138,13 @@ namespace netExmaMP
 
         private void TimelaneSlider_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
         {
-            player.Pause();
-            timer.Stop();
+            Pause();
         }
 
         private void TimelaneSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
             player.Position=TimeSpan.FromSeconds(TimelaneSlider.Value);
-            player.Play();
-            timer.Start();
+            Play();
         }
     }
 }

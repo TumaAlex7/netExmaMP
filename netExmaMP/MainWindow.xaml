@@ -5,28 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:netExmaMP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="600">
+    <Window.Resources>
+        <SolidColorBrush x:Key="ForegroundColor" Color="{Binding ForeColor}"/>
+    </Window.Resources>
+    <Window.Background>
+        <SolidColorBrush Color="{Binding BackColor}"/>
+    </Window.Background>
+    <Window.InputBindings>
+        <KeyBinding Command="TogglePlayPause" Key="Space"/>
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="Open_Executed"/>
+        <CommandBinding Command="Properties" Executed="Properties_Executed"/>
+        <CommandBinding Command="TogglePlayPause" Executed="TogglePlayPause_Executed"/>
+        <CommandBinding Command="Play" Executed="Play_Executed" CanExecute="Play_CanExecute"/>
+        <CommandBinding Command="Pause" Executed="Pause_Executed" CanExecute="Pause_CanExecute"/>
+        <CommandBinding Command="NextTrack" Executed="NextTrack_Executed" CanExecute="NextTrack_CanExecute"/>
+        <CommandBinding Command="PreviousTrack" Executed="PreviousTrack_Executed" CanExecute="PreviouseTrack_CanExecute"/>
+        <CommandBinding Command="IncreaseVolume" Executed="IncreaseVolume_Executed"/>
+        <CommandBinding Command="DecreaseVolume" Executed="DecreaseVolume_Executed"/>
+        <CommandBinding Command="MuteVolume" Executed="MuteVolume_Executed"/>
+    </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="42*"/>
-            <ColumnDefinition Width="341*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Menu IsMainMenu="True" Grid.ColumnSpan="2" Margin="0,0,2,378" Grid.RowSpan="2">
+        <Menu IsMainMenu="True" Grid.ColumnSpan="3">
             <MenuItem Header="File">
-                <MenuItem Header="Open" Click="OpenFile_Click"/>
+                <MenuItem Header="Open" Command="Open"/>
+                <MenuItem Header="Settings" Command="Properties"/>
+            </MenuItem>
+            <MenuItem Header="Playback">
+                <MenuItem Header="Play" Command="Play"/>
+                <MenuItem Header="Pause" Command="Pause"/>
+                <Separator/>
+                <MenuItem Header="NextTrack" Command="NextTrack"/>
+                <MenuItem Header="PreviousTrack" Command="PreviousTrack"/>
+                <Separator/>
+                <MenuItem Header="IncreaseVolume" Command="IncreaseVolume"/>
+                <MenuItem Header="Mute" Command="MuteVolume"/>
+                <MenuItem Header="DecreaseVolume" Command="DecreaseVolume"/>
             </MenuItem>
         </Menu>
-        <Expander Grid.Row="1" ExpandDirection="Right" Grid.ColumnSpan="2" Margin="0,0,2,0">
+        <Expander Grid.Row="1" ExpandDirection="Right" Grid.ColumnSpan="2">
 
         </Expander>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="SpeedCB" Margin="7" Width="64" HorizontalAlignment="Left" ItemsSource="{Binding Speeds}"/>
+            <ToggleButton x:Name="LoopTBtn" Grid.Column="1" Margin="7" IsThreeState="True" Click="LoopTBtn_Click"/>
+            <Button x:Name="BackBtn" Grid.Column="2" Margin="5" Click="BackBtn_Click"/>
+            <ToggleButton x:Name="PlayPauseTBtn" Grid.Column="3" Margin="3" Click="PlayPauseTBtn_Click"/>
+            <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Click="NextBtn_Click"/>
+            <Button x:Name="ShuffleBtn" Grid.Column="5" Margin="7" Click="ShuffleBtn_Click"/>
+            <ToggleButton x:Name="VolumeTBtn" Grid.Column="6" Margin="3,3,15,3" HorizontalAlignment="Right"
+                  Width="{Binding ElementName=VolumeTBtn, Path=ActualHeight}"
+                  Click="VolumeTBtn_Click" MouseEnter="VolumeTBtn_MouseEnter"/>
+            <Popup x:Name="VolumePopup" StaysOpen="False" PlacementTarget="{Binding ElementName=VolumeTBtn}" Placement="Top" Height="80" Width="{Binding ElementName=VolumeTBtn, Path=ActualWidth}">
+                <Slider x:Name="VolumeSlider" Orientation="Vertical" Maximum="100" ValueChanged="VolumeSlider_ValueChanged"/>
+            </Popup>
+        </Grid>
         <GridSplitter Grid.Row="1" Grid.Column="1" Background="Gray" Width="2" HorizontalAlignment="Center"/>
         <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
@@ -44,37 +97,6 @@
                 <Label Grid.Column="1" x:Name="MaxTimeLabel"/>
                 <Slider Grid.Column="2" x:Name="TimelaneSlider" Thumb.DragStarted="TimelaneSlider_DragStarted" Thumb.DragCompleted="TimelaneSlider_DragCompleted"/>
             </Grid>
-        </Grid>
-        <GridSplitter HorizontalAlignment="Stretch" Grid.Row="1" Grid.ColumnSpan="4" Background="Gray" Height="2" Margin="0,378,0,0" Grid.RowSpan="2"/>
-        <Grid Grid.Row="2" Grid.ColumnSpan="4" Margin="0,2,0,0" Grid.RowSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <ComboBox x:Name="SpeedCB" Margin="7" Width="64" HorizontalAlignment="Left" ItemsSource="{Binding Speeds}"/>
-            <ToggleButton x:Name="LoopTBtn" Grid.Column="1" Margin="7" IsThreeState="True" Click="LoopTBtn_Click"/>
-            <Button x:Name="BackBtn" Grid.Column="2" Margin="5" Click="BackBtn_Click"/>
-            <ToggleButton x:Name="PausePlayTBtn" Grid.Column="3" Margin="3" Click="PausePlayTBtn_Click"/>
-            <!--
-            <ToggleButton.ContentTemplate>
-                <DataTemplate>
-                    <Image Source="PlayButton.png"/>
-                </DataTemplate>
-            </ToggleButton.ContentTemplate>
-            -->
-            <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Click="NextBtn_Click"/>
-            <Button x:Name="ShuffleBtn" Grid.Column="5" Margin="7" Click="ShuffleBtn_Click"/>
-            <ToggleButton x:Name="VolumeTBtn" Grid.Column="6" Margin="3,3,15,3" HorizontalAlignment="Right"
-                          Width="{Binding ElementName=VolumeTBtn, Path=ActualHeight}"
-                          Click="VolumeTBtn_Click" MouseEnter="VolumeTBtn_MouseEnter"/>
-            <Popup x:Name="VolumePopup" StaysOpen="False" PlacementTarget="{Binding ElementName=VolumeTBtn}" Placement="Top" Height="80" Width="{Binding ElementName=VolumeTBtn, Path=ActualWidth}">
-                <Slider x:Name="VolumeSlider" Orientation="Vertical" Maximum="100" ValueChanged="VolumeSlider_ValueChanged"/>
-            </Popup>
         </Grid>
     </Grid>
 </Window>
