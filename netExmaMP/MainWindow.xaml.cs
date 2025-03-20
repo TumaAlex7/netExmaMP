@@ -19,20 +19,19 @@ namespace netExmaMP
     /// 
     public partial class MainWindow : Window
     {
-        public System.Windows.Media.Color ForeColor { get { return (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(Properties.Settings.Default.FgColor); } }
-        public System.Windows.Media.Color BackColor { get { return (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(Properties.Settings.Default.BgColor); } }
-            
+        //public SolidColorBrush ForeColor { get { return new((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(Properties.Settings.Default.FgColor)); } }
+        //public SolidColorBrush BackColor => new((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(Properties.Settings.Default.BgColor));
+
         double[] speeds = new double[9];
         public double[] Speeds { get { return speeds; } }
         MediaPlayer player;
-        VideoDrawing videoDrawing;
         DispatcherTimer timer = new();
-        SettingsWindow settings;
 
         public MainWindow()
         {
             SpeedCBInit();
-            this.DataContext = this;
+            this.DataContext = Properties.Settings.Default;
+            /*this.DataContext = this;*/
 
             InitializeComponent();
 
@@ -42,16 +41,10 @@ namespace netExmaMP
             player.MediaOpened += Player_MediaOpened;
             player.MediaEnded += Player_MediaEnded;
 
-            videoDrawing = new VideoDrawing();
-            videoDrawing.Player = player;
-            videoDrawing.Rect = DrawingRect.RenderedGeometry.Bounds;
-
             timer.Interval = TimeSpan.FromSeconds(0.5);
             timer.Tick += timer_tick;
 
             VolumeSlider.Value = player.Volume * 100;
-
-            settings = new SettingsWindow();
         }
 
         private void SpeedCBInit()
@@ -74,7 +67,7 @@ namespace netExmaMP
 
         private void Properties_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            settings.ShowDialog();
+            new SettingsWindow(this).ShowDialog();
         }
 
         private void TogglePlayPause_Executed(object sender, ExecutedRoutedEventArgs e)

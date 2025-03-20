@@ -20,8 +20,13 @@ namespace netExmaMP
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow()
+        System.Windows.Media.Color FgColor => Properties.Settings.Default.FgColor;
+        System.Windows.Media.Color BgColor => Properties.Settings.Default.BgColor;
+
+        public SettingsWindow(Window owner)
         {
+            this.Owner = owner;
+
             InitializeComponent();
 
             this.Loaded += SettingsWindow_Loaded;
@@ -30,16 +35,8 @@ namespace netExmaMP
         private void SettingsWindow_Loaded(object sender, RoutedEventArgs e)
         {
             
-            foreground.Text = Properties.Settings.Default.FgColor;
-            background.Text = Properties.Settings.Default.BgColor;
-        }
-
-        private void Save()
-        {
-
-            if(Regex.IsMatch(foreground.Text, "^#(?:[0-9a-fA-F]{3,4}){1,2}$")) Properties.Settings.Default.FgColor = foreground.Text;
-            if(Regex.IsMatch(foreground.Text, "^#(?:[0-9a-fA-F]{3,4}){1,2}$")) Properties.Settings.Default.BgColor = background.Text;
-            Properties.Settings.Default.Save();
+            foreground.Text = string.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", FgColor.A, FgColor.R, FgColor.G, FgColor.B);
+            background.Text = string.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", BgColor.A, BgColor.R, BgColor.G, BgColor.B);
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
@@ -49,13 +46,19 @@ namespace netExmaMP
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            Save();
+            Properties.Settings.Default.Save();
         }
 
         private void ApplyBtn_Click(object sender, RoutedEventArgs e)
         {
-            Save();
+            Properties.Settings.Default.Save();
             Close();
+        }
+
+        private void color_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            try { Properties.Settings.Default.FgColor = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString((sender as TextBox).Text); }
+            catch { (sender as TextBox).Text = string.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", FgColor.A, FgColor.R, FgColor.G, FgColor.B); }
         }
     }
 }
