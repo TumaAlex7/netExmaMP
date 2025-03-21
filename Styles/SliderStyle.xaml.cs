@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,48 @@ namespace Styles
         public SliderStyle()
         {
             InitializeComponent();
+        }
+        public class SliderValueToWidthConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                double sliderValue = (double)value;
+                
+                double maxValue = 100;
+
+                double trackWidth = 200; 
+                                         
+                double width = (sliderValue / maxValue) * trackWidth;
+
+                return width;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public class SliderValueToThumbPositionConverter : IValueConverter
+        {
+            public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                double sliderValue = (double)value;
+                
+                double maxValue = 100;
+
+                double trackWidth = 200;  
+                double thumbWidth = 14; 
+                
+                double position = (sliderValue / maxValue) * (trackWidth - thumbWidth);
+
+                return position;
+            }
+
+            public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
