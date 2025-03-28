@@ -7,8 +7,6 @@
 
 <h2 id="english">English Version</h2>
 # netExmaMP
-A simple but functional media player for Windows with support for audio files, written in WPF (C#)
-
 ## Opportunities
 - Media Formats: MP3, MPG, MPEG playback
 - Playback Controls
@@ -35,8 +33,6 @@ A simple but functional media player for Windows with support for audio files, w
 
 <h2 id="russian" style="margin-top: 40px;">Версия на русском языке</h2>
 # netExmaMP
-Простой, но функциональный медиаплеер для Windows с поддержкой аудио, написанный на WPF (C#)
-
 ## Функции
 - Поддерживаемые форматы: воспроизведение MP3, MPG, MPEG
 - Управление воспроизведением
