@@ -6,6 +6,7 @@
 </p>
 <h1 align="center">netExmaMP</h1>
 <h2 id="english">English Version</h2>
+
 ## Opportunities
 - Media Formats: MP3, MPG, MPEG playback
 - Playback Controls
@@ -31,6 +32,7 @@
 - .NET 8.0+
 
 <h2 id="russian" style="margin-top: 40px;">Версия на русском языке</h2>
+
 ## Функции
 - Поддерживаемые форматы: воспроизведение MP3, MPG, MPEG
 - Управление воспроизведением
