@@ -187,7 +187,7 @@
                         Style="{StaticResource ShuffleButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="ShuffleBtn_Click"/>
                 <ToggleButton x:Name="VolumeTBtn" Grid.Column="6" Margin="3,3,15,3" Height="{Binding ElementName=VolumeTBtn, Path=ActualWidth}" IsChecked="True"
                         Style="{StaticResource VolumeButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" Click="VolumeTBtn_Click" MouseEnter="VolumeTBtn_MouseEnter" MouseLeave="VolumeTBtn_MouseLeave"/>
-                <Popup x:Name="VolumePopup" StaysOpen="True" PlacementTarget="{Binding ElementName=VolumeTBtn}" Placement="Right" Height="120" Width="20" MouseLeave="VolumeTBtn_MouseLeave">
+                <Popup x:Name="VolumePopup" StaysOpen="False" PlacementTarget="{Binding ElementName=VolumeTBtn}" Placement="Right" Height="120" Width="20" MouseLeave="VolumeTBtn_MouseLeave">
                     <Slider x:Name="VolumeSlider" Background="{Binding ElementName=Menu, Path=Background}" Orientation="Vertical" Maximum="100" ValueChanged="VolumeSlider_ValueChanged"/>
                 </Popup>
             </Grid>

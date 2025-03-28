@@ -113,7 +113,6 @@ namespace netExmaMP
                     player.Volume = 0;
                     break;
             }
-            Thread.Sleep(100);
             VolumePopup.IsOpen = true;
         }
 
@@ -125,7 +124,7 @@ namespace netExmaMP
 
         private void VolumeTBtn_MouseLeave(object sender, MouseEventArgs e)
         {
-            Thread.Sleep(350);
+            Thread.Sleep(50);
             if(!(VolumePopup.IsMouseOver || VolumeTBtn.IsMouseOver)) VolumePopup.IsOpen = false;
         }
 
