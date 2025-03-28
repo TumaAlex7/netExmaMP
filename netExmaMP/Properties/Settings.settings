@@ -11,5 +11,11 @@
     <Setting Name="BgColor" Type="System.Windows.Media.Color" Scope="User">
       <Value Profile="(Default)">#FF404040</Value>
     </Setting>
+    <Setting Name="TextColor" Type="System.Windows.Media.Color" Scope="User">
+      <Value Profile="(Default)">#FFFFFFFF</Value>
+    </Setting>
+    <Setting Name="AutoText" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

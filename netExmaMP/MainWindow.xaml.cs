@@ -30,10 +30,10 @@ namespace netExmaMP
         public MainWindow()
         {
             SpeedCBInit();
-            this.DataContext = Properties.Settings.Default;
-            /*this.DataContext = this;*/
+            this.DataContext = this;
 
             InitializeComponent();
+            LoadSettings();
 
             SpeedCB.SelectedValue = 1.0;
 
@@ -45,11 +45,23 @@ namespace netExmaMP
             timer.Tick += timer_tick;
 
             VolumeSlider.Value = player.Volume * 100;
+            if(VolumeSlider.Value == 0) VolumeTBtn.IsChecked = false;
         }
 
         private void SpeedCBInit()
         {
             for (int i = 0; i < 8; i++) speeds[i] = 0.5 + 0.25 * (8 - i);
+        }
+
+        public void LoadSettings()
+        {
+            this.Background = new SolidColorBrush(Properties.Settings.Default.BgColor);
+            this.Foreground = new SolidColorBrush(Properties.Settings.Default.FgColor);
+
+            Menu.Background = new SolidColorBrush((Properties.Settings.Default.BgColor.B & Properties.Settings.Default.BgColor.G & Properties.Settings.Default.BgColor.R) < 128 ?
+                Color.FromArgb(Properties.Settings.Default.BgColor.A, (byte)(Properties.Settings.Default.BgColor.R + 8), (byte)(Properties.Settings.Default.BgColor.G + 8), (byte)(Properties.Settings.Default.BgColor.B + 8)) :
+                Color.FromArgb(Properties.Settings.Default.BgColor.A, (byte)(Properties.Settings.Default.BgColor.R - 8), (byte)(Properties.Settings.Default.BgColor.G - 8), (byte)(Properties.Settings.Default.BgColor.B - 8)));
+            Menu.Foreground = new SolidColorBrush(Properties.Settings.Default.TextColor);
         }
 
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)

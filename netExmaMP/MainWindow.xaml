@@ -6,10 +6,9 @@
         xmlns:local="clr-namespace:netExmaMP"
         mc:Ignorable="d"
         x:Name="Window"
-        Title="MainWindow" Height="400" Width="600"
-        Background="{Binding BackColor}">
+        Title="MainWindow" Height="400" Width="600">
     <Window.Resources>
-
+        
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Command="TogglePlayPause" Key="Space"/>
@@ -36,7 +35,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu IsMainMenu="True" Grid.ColumnSpan="3">
+        <Menu x:Name="Menu" IsMainMenu="True" Grid.ColumnSpan="3">
             <MenuItem Header="File">
                 <MenuItem Header="Open" Command="Open"/>
                 <MenuItem Header="Settings" Command="Properties"/>
@@ -63,25 +62,29 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.85*"/>
+                    <ColumnDefinition Width="0.9*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.9*"/>
+                    <ColumnDefinition Width="0.85*"/>
+                    <ColumnDefinition Width="0.8*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox x:Name="SpeedCB" Margin="7" Width="64" HorizontalAlignment="Left" ItemsSource="{Binding Speeds}"/>
-                <ToggleButton x:Name="LoopTBtn" Grid.Column="1" Margin="7" IsThreeState="True" Click="LoopTBtn_Click"/>
-                <Button x:Name="BackBtn" Grid.Column="2" Margin="5" Click="BackBtn_Click"/>
-                <ToggleButton x:Name="PlayPauseTBtn" Grid.Column="3" Margin="3" Click="PlayPauseTBtn_Click"/>
-                <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Click="NextBtn_Click"/>
-                <Button x:Name="ShuffleBtn" Grid.Column="5" Margin="7" Click="ShuffleBtn_Click"/>
-                <ToggleButton x:Name="VolumeTBtn" Grid.Column="6" Margin="3,3,15,3" HorizontalAlignment="Right"
-                      Width="{Binding ElementName=VolumeTBtn, Path=ActualHeight}"
-                      Click="VolumeTBtn_Click" MouseEnter="VolumeTBtn_MouseEnter"/>
-                <Popup x:Name="VolumePopup" StaysOpen="False" PlacementTarget="{Binding ElementName=VolumeTBtn}" Placement="Top" Height="80" Width="{Binding ElementName=VolumeTBtn, Path=ActualWidth}">
-                    <Slider x:Name="VolumeSlider" Orientation="Vertical" Maximum="100" ValueChanged="VolumeSlider_ValueChanged"/>
+                <ComboBox x:Name="SpeedCB" Margin="15,3,3,3" Height="18" ItemsSource="{Binding Speeds}"/>
+                <ToggleButton x:Name="LoopTBtn" Grid.Column="1" Margin="1" IsThreeState="True" Height="{Binding ElementName=LoopTBtn, Path=ActualWidth}"
+                        Style="{StaticResource LoopButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="LoopTBtn_Click"/>
+                <Button x:Name="BackBtn" Grid.Column="2" Margin="5" Height="{Binding ElementName=BackBtn, Path=ActualWidth}"
+                        Style="{StaticResource BackButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="BackBtn_Click"/>
+                <ToggleButton x:Name="PlayPauseTBtn" Grid.Column="3" Margin="1"  Height="{Binding ElementName=PlayPauseTBtn, Path=ActualWidth}"
+                        Style="{StaticResource PlayPauseButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" Click="PlayPauseTBtn_Click"/>
+                <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Height="{Binding ElementName=NextBtn, Path=ActualWidth}"
+                        Style="{StaticResource NextButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="NextBtn_Click"/>
+                <Button x:Name="ShuffleBtn" Grid.Column="5" Margin="5" Height="{Binding ElementName=ShuffleBtn, Path=ActualWidth}"
+                        Style="{StaticResource ShuffleButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="ShuffleBtn_Click"/>
+                <ToggleButton x:Name="VolumeTBtn" Grid.Column="6" Margin="3,3,15,3" Height="{Binding ElementName=VolumeTBtn, Path=ActualWidth}" IsChecked="True"
+                        Style="{StaticResource VolumeButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" Click="VolumeTBtn_Click" MouseEnter="VolumeTBtn_MouseEnter" MouseLeave="VolumeTBtn_MouseLeave"/>
+                <Popup x:Name="VolumePopup" StaysOpen="True" PlacementTarget="{Binding ElementName=VolumeTBtn}" Placement="Right" Height="120" Width="20" MouseLeave="VolumeTBtn_MouseLeave">
+                    <Slider x:Name="VolumeSlider" Background="{Binding ElementName=Menu, Path=Background}" Orientation="Vertical" Maximum="100" ValueChanged="VolumeSlider_ValueChanged"/>
                 </Popup>
             </Grid>
             <Grid Grid.Row="1">

@@ -105,22 +105,35 @@ namespace netExmaMP
             {
                 case true:
                     player.Volume = volumeData;
+                    VolumeSlider.Value = volumeData*100;
                     break;
                 case false:
                     volumeData = player.Volume;
+                    VolumeSlider.Value = 0;
                     player.Volume = 0;
                     break;
             }
+            Thread.Sleep(100);
+            VolumePopup.IsOpen = true;
         }
 
         private void VolumeTBtn_MouseEnter(object sender, MouseEventArgs e)
         {
             VolumePopup.IsOpen = true;
+            if(VolumeSlider.Value != 0) volumeData = VolumeSlider.Value/100;
+        }
+
+        private void VolumeTBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Thread.Sleep(350);
+            if(!(VolumePopup.IsMouseOver || VolumeTBtn.IsMouseOver)) VolumePopup.IsOpen = false;
         }
 
         private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             player.Volume = VolumeSlider.Value / 100;
+            if(VolumeSlider.Value == 0) VolumeTBtn.IsChecked = false;
+            else VolumeTBtn.IsChecked = true;
         }
 
         private void TimeTB_TextInput(object sender, TextChangedEventArgs e)

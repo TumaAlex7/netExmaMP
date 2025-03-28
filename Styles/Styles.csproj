@@ -7,4 +7,56 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="ArrowMask.png" />
+    <None Remove="LoopMask.png" />
+    <None Remove="MuteVolumeMask.png" />
+    <None Remove="NoneLoopMask.png" />
+    <None Remove="PauseMask.png" />
+    <None Remove="PlayMask.png" />
+    <None Remove="ShuffleMask.png" />
+    <None Remove="SingleLoopMask.png" />
+    <None Remove="VolumeMask.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="MediaControlsStyles.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Masks\ArrowMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Masks\LoopMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Masks\MuteVolumeMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Masks\NoneLoopMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Masks\PauseMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Masks\PlayMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Masks\ShuffleMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Masks\SingleLoopMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Masks\VolumeMask.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="MediaControlsStyles.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>
