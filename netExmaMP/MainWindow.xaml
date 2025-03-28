@@ -8,7 +8,111 @@
         x:Name="Window"
         Title="MainWindow" Height="400" Width="600">
     <Window.Resources>
-        
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+            <Border x:Name="DD" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                <Path x:Name="Arrow" HorizontalAlignment="Right" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" Fill="{Binding ElementName=Window, Path=Foreground}"/>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal"/>
+                        <VisualState x:Name="MouseOver">
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DD" Storyboard.TargetProperty="(Panel.Background)">
+                                    <DiscreteObjectKeyFrame Value="{TemplateBinding Foreground}"/>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pressed"/>
+                        <VisualState x:Name="Disabled"/>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+        </ControlTemplate>
+        <Style TargetType="ComboBox">
+            <Setter Property="Foreground" Value="{Binding ElementName=Menu, Path=Foreground}"/>
+            <Setter Property="Background" Value="{Binding ElementName=Window, Path=Background}"/>
+            <Setter Property="BorderBrush" Value="{Binding ElementName=Window, Path=Foreground}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Template="{StaticResource ComboBoxToggleButton}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" Foreground="{Binding ElementName=Menu, Path=Foreground}"/>
+                            <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" 
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                            <Popup Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="True" PopupAnimation="Slide" Width="{TemplateBinding ActualWidth}">
+                                <Border x:Name="DD" Background="{TemplateBinding Background}">
+                                    <ScrollViewer>
+                                        <StackPanel IsItemsHost="True"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Popup>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="{Binding ElementName=Menu, Path=Background}"/>
+            <Setter Property="BorderBrush" Value="{Binding ElementName=Window, Path=Foreground}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border x:Name="Border" Padding="2" BorderThickness="1" BorderBrush="{TemplateBinding Background}" Background="Transparent">
+                            <ContentPresenter/>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush)">
+                                                <DiscreteObjectKeyFrame Value="{TemplateBinding BorderBrush}" KeyTime="0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background)">
+                                                <DiscreteObjectKeyFrame Value="{TemplateBinding Background}" KeyTime="0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disable"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="{ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}" BasedOn="{x:Null}" TargetType="{x:Type ScrollViewer}">
+            <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="BorderBrush" Value="{Binding ElementName=Window, Path=Background}"/>
+        </Style>
+        <Style TargetType="MenuItem">
+            <Setter Property="Background" Value="{Binding ElementName=Menu, Path=Background}"/>
+            <Setter Property="BorderBrush" Value="{Binding ElementName=Window, Path=Background}"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{Binding ElementName=Menu, Path=Background}"/>
+            <Setter Property="Foreground" Value="{Binding ElementName=Menu, Path=Foreground}"/>
+            <Setter Property="BorderBrush" Value="{Binding ElementName=Window, Path=Foreground}"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="{Binding ElementName=Menu, Path=Foreground}"/>
+        </Style>
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Command="TogglePlayPause" Key="Space"/>
@@ -35,7 +139,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Menu x:Name="Menu" IsMainMenu="True" Grid.ColumnSpan="3">
+        <Menu x:Name="Menu" IsMainMenu="True" Grid.ColumnSpan="3" BorderBrush="{Binding ElementName=Window, Path=Background}">
             <MenuItem Header="File">
                 <MenuItem Header="Open" Command="Open"/>
                 <MenuItem Header="Settings" Command="Properties"/>
@@ -93,7 +197,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="TimeTB" TextChanged="TimeTB_TextInput"/>
+                <TextBox x:Name="TimeTB" PreviewTextInput="TimeTB_TextInput" VerticalContentAlignment="Center"/>
                 <Label Grid.Column="1" x:Name="MaxTimeLabel"/>
                 <Slider Grid.Column="2" x:Name="TimelaneSlider" Thumb.DragStarted="TimelaneSlider_DragStarted" Thumb.DragCompleted="TimelaneSlider_DragCompleted"/>
             </Grid>

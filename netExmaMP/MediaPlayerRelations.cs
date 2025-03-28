@@ -136,7 +136,7 @@ namespace netExmaMP
             else VolumeTBtn.IsChecked = true;
         }
 
-        private void TimeTB_TextInput(object sender, TextChangedEventArgs e)
+        private void TimeTB_TextInput(object sender, InputEventArgs e)
         {
             try
             {
