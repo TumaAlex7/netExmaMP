@@ -4,59 +4,53 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:netExmaMP"
-        mc:Ignorable="d"
+        mc:Ignorable="d" x:Uid="SetW"
         Title="Settings" Height="450" Width="400">
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="{Binding ElementName=Window, Path=Background}"/>
-            <Setter Property="BorderBrush" Value="{Binding ElementName=Window, Path=Foreground}"/>
+        <Style x:Uid="Style_1" TargetType="Button">
+            <Setter x:Uid="Setter_1" Property="Background" Value="{Binding ElementName=Window, Path=Background}"/>
+            <Setter x:Uid="Setter_2" Property="BorderBrush" Value="{Binding ElementName=Window, Path=Foreground}"/>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid x:Uid="Grid_1">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition x:Uid="RowDefinition_1"/>
+            <RowDefinition x:Uid="RowDefinition_2" Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid x:Uid="Grid_2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/> 
+                <ColumnDefinition x:Uid="ColumnDefinition_1"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_2"/> 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="AUTO"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition x:Uid="RowDefinition_3" Height="auto"/>
+                <RowDefinition x:Uid="RowDefinition_4" Height="AUTO"/>
+                <RowDefinition x:Uid="RowDefinition_5" Height="auto"/>
+                <RowDefinition x:Uid="RowDefinition_6" Height="auto"/>
+                <RowDefinition x:Uid="RowDefinition_7" Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Label Content="Language" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
-            <ComboBox Grid.Column="1" x:Name="lang">
-                
-            </ComboBox>
+            <Label x:Uid="Label_2" Content="Foreground color" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
+            <TextBox x:Uid="foreground" x:Name="foreground" Grid.Column="1"/>
 
-            <Label Grid.Row="1" Content="Foreground color" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
-            <TextBox x:Name="foreground" Grid.Row="1" Grid.Column="1"/>
+            <Label x:Uid="Label_3" Grid.Row="1" Content="Background color" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
+            <TextBox x:Uid="background" x:Name="background" Grid.Row="1" Grid.Column="1"/>
 
-            <Label Grid.Row="2" Content="Background color" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
-            <TextBox x:Name="background" Grid.Row="2" Grid.Column="1"/>
+            <Label x:Uid="Label_4" Grid.Row="2" Content="Manual text color input" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
+            <CheckBox x:Uid="autotext" x:Name="autotext" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,13,0"/>
 
-            <Label Grid.Row="3" Content="Manual text color input" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
-            <CheckBox x:Name="autotext" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,13,0"/>
-
-            <Label Grid.Row="4" Content="Text color" Foreground="{Binding ElementName=Window, Path=Foreground}" IsEnabled="{Binding ElementName=autotext, Path=IsChecked}"/>
-            <TextBox x:Name="textcolor" Grid.Row="4" Grid.Column="1" IsEnabled="{Binding ElementName=autotext, Path=IsChecked}"/>
+            <Label x:Uid="Label_5" Grid.Row="3" Content="Text color" Foreground="{Binding ElementName=Window, Path=Foreground}" IsEnabled="{Binding ElementName=autotext, Path=IsChecked}"/>
+            <TextBox x:Uid="textcolor" x:Name="textcolor" Grid.Row="3" Grid.Column="1" IsEnabled="{Binding ElementName=autotext, Path=IsChecked}"/>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid x:Uid="Grid_3" Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition x:Uid="ColumnDefinition_3"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_4"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_5"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="CancelBtn" Content="Cancel" Margin="3" Click="CancelBtn_Click" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
-            <Button x:Name="SaveBtn" Grid.Column="1" Content="Save" Margin="3" Click="SaveBtn_Click" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
-            <Button x:Name="ApplyBtn" Grid.Column="2" Content="Apply" Margin="3" Click="ApplyBtn_Click" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
+            <Button x:Uid="CancelBtn" x:Name="CancelBtn" Content="Cancel" Margin="3" Click="CancelBtn_Click" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
+            <Button x:Uid="SaveBtn" x:Name="SaveBtn" Grid.Column="1" Content="Save" Margin="3" Click="SaveBtn_Click" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
+            <Button x:Uid="ApplyBtn" x:Name="ApplyBtn" Grid.Column="2" Content="Apply" Margin="3" Click="ApplyBtn_Click" Foreground="{Binding ElementName=Window, Path=Foreground}"/>
         </Grid>
     </Grid>
 </Window>
