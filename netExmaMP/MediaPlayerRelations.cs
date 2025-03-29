@@ -10,7 +10,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using ATL
+using ATL;
 
 namespace netExmaMP
 {
@@ -176,6 +176,11 @@ namespace netExmaMP
                 Play();
                 PlayPauseTBtn.IsChecked = true;
             }
+        }
+
+        private void SpeedCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            player.SpeedRatio = (double)SpeedCB.SelectedValue;
         }
     }
 }

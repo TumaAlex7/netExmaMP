@@ -35,14 +35,14 @@ namespace netExmaMP
             InitializeComponent();
             LoadSettings();
 
-            SpeedCB.SelectedValue = 1.0;
-
             player = new MediaPlayer();
             player.MediaOpened += Player_MediaOpened;
             player.MediaEnded += Player_MediaEnded;
 
             timer.Interval = TimeSpan.FromSeconds(0.5);
             timer.Tick += timer_tick;
+
+            SpeedCB.SelectedValue = 1.0;
 
             VolumeSlider.Value = player.Volume * 100;
             if(VolumeSlider.Value == 0) VolumeTBtn.IsChecked = false;

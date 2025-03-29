@@ -174,7 +174,7 @@
                     <ColumnDefinition x:Uid="ColumnDefinition_9" Width="0.85*"/>
                     <ColumnDefinition x:Uid="ColumnDefinition_10" Width="0.8*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox x:Uid="SpeedCB" x:Name="SpeedCB" Margin="15,3,3,3" Height="18" ItemsSource="{Binding Speeds}"/>
+                <ComboBox x:Uid="SpeedCB" x:Name="SpeedCB" Margin="15,3,3,3" Height="18" ItemsSource="{Binding Speeds}" SelectionChanged="SpeedCB_SelectionChanged"/>
                 <ToggleButton x:Uid="LoopTBtn" x:Name="LoopTBtn" Grid.Column="1" Margin="1" IsThreeState="True" Height="{Binding ElementName=LoopTBtn, Path=ActualWidth}"
                         Style="{StaticResource LoopButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="LoopTBtn_Click"/>
                 <Button x:Uid="BackBtn" x:Name="BackBtn" Grid.Column="2" Margin="5" Height="{Binding ElementName=BackBtn, Path=ActualWidth}"
