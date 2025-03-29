@@ -29,6 +29,7 @@ namespace netExmaMP
         public ObservableCollection<Track> Queue { get { return queue; } }
 
         private object currentSelection;
+        private static readonly Random rng = new Random();
 
         public QueueViewer()
         {
@@ -206,6 +207,31 @@ namespace netExmaMP
             ListBox parent = sender as ListBox;
             Track data = GetObjectDataFromPoint(parent, e.GetPosition(parent)) as Track;
             parent.SelectedItem = data;
+        }
+
+        public void Shuffle()
+        {
+            var Items = QueueTbtn.IsChecked == true ? Queue : Album;
+            if (Items.Count <= 1) return;
+
+            List<Track> list = new(Items);
+
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                (list[n], list[k]) = (list[k], list[n]);
+            }
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                int oldIndex = Items.IndexOf(list[i]);
+                if (oldIndex != i)
+                {
+                    Items.Move(oldIndex, i);
+                }
+            }
         }
     }
 

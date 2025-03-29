@@ -16,6 +16,7 @@ namespace netExmaMP
     public partial class MainWindow
     {
         double volumeData = 0.5;
+        bool isDynamicPaused = false;
 
         public void OpenMediaFile(Uri uri)
         {
@@ -93,13 +94,13 @@ namespace netExmaMP
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            string p = QViewer.GetNextTrack();
+            if (p != null) OpenMediaFile(new(p));
         }
 
         private void ShuffleBtn_Click(object sender, RoutedEventArgs e)
         {
-            string p = QViewer.GetNextTrack();
-            if (p != null) OpenMediaFile(new(p));
+            QViewer.Shuffle();
         }
 
         private void VolumeTBtn_Click(object sender, RoutedEventArgs e)
@@ -143,7 +144,7 @@ namespace netExmaMP
             try
             {
                 player.Position = TimeSpan.Parse(TimeTB.Text);
-                
+                TimelaneSlider.Value = player.Position.TotalSeconds;
             }
             catch (Exception ex)
             {
@@ -153,13 +154,24 @@ namespace netExmaMP
 
         private void TimelaneSlider_DragStarted(object sender, System.Windows.Controls.Primitives.DragStartedEventArgs e)
         {
-            Pause();
+            if (PlayPauseTBtn.IsChecked == true)
+            {
+                Pause();
+                PlayPauseTBtn.IsChecked = false;
+                isDynamicPaused = true;
+            }
+            else isDynamicPaused = false;
         }
 
         private void TimelaneSlider_DragCompleted(object sender, System.Windows.Controls.Primitives.DragCompletedEventArgs e)
         {
             player.Position=TimeSpan.FromSeconds(TimelaneSlider.Value);
-            Play();
+            TimeTB.Text=player.Position.ToString(@"hh\:mm\:ss");
+            if (isDynamicPaused)
+            {
+                Play();
+                PlayPauseTBtn.IsChecked = true;
+            }
         }
     }
 }
