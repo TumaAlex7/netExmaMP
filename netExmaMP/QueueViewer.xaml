@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="netExmaMP.QueueViewer"
+﻿<UserControl x:Uid="UserControl_1" x:Class="netExmaMP.QueueViewer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,42 +8,42 @@
 	         d:DesignHeight="450" d:DesignWidth="150"
              Foreground="{StaticResource TextColor}">
     <UserControl.Resources>
-        <Style TargetType="Label">
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+        <Style x:Uid="Style_1" TargetType="Label">
+            <Setter x:Uid="Setter_1" Property="Foreground" Value="{StaticResource TextColor}"/>
         </Style>
-        <Style x:Key="ModeBtn" TargetType="ToggleButton">
-            <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
-            <Setter Property="Template">
+        <Style x:Uid="Style_2" x:Key="ModeBtn" TargetType="ToggleButton">
+            <Setter x:Uid="Setter_2" Property="Foreground" Value="{StaticResource TextColor}"/>
+            <Setter x:Uid="Setter_3" Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="ToggleButton">
-                        <Border x:Name="DD" CornerRadius="0,0,8,8" BorderThickness="1" BorderBrush="{StaticResource BackgroundColor}" Background="{StaticResource BackgroundColor}">
-                            <ContentPresenter x:Name="TB" Margin="7" HorizontalAlignment="Center"/>
+                    <ControlTemplate x:Uid="ControlTemplate_1" TargetType="ToggleButton">
+                        <Border x:Uid="DD" x:Name="DD" CornerRadius="0,0,8,8" BorderThickness="1" BorderBrush="{StaticResource BackgroundColor}" Background="{StaticResource BackgroundColor}">
+                            <ContentPresenter x:Uid="TB" x:Name="TB" Margin="7" HorizontalAlignment="Center"/>
                                 <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal"/>
-                                    <VisualState x:Name="MouseOver">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DD" Storyboard.TargetProperty="BorderBrush">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ForegroundColor}"/>
+                                <VisualStateGroup x:Uid="CommonStates" x:Name="CommonStates">
+                                    <VisualState x:Uid="Normal" x:Name="Normal"/>
+                                    <VisualState x:Uid="MouseOver" x:Name="MouseOver">
+                                        <Storyboard x:Uid="Storyboard_1">
+                                            <ObjectAnimationUsingKeyFrames x:Uid="ObjectAnimationUsingKeyFrames_1" Storyboard.TargetName="DD" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame x:Uid="DiscreteObjectKeyFrame_1" KeyTime="0" Value="{StaticResource ForegroundColor}"/>
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
-                                    <VisualState x:Name="Pressed"/>
-                                    <VisualState x:Name="Disabled"/>
+                                    <VisualState x:Uid="Pressed" x:Name="Pressed"/>
+                                    <VisualState x:Uid="Disabled" x:Name="Disabled"/>
                                 </VisualStateGroup>
-                                <VisualStateGroup x:Name="CheckStates">
-                                    <VisualState x:Name="Checked">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DD" Storyboard.TargetProperty="(Panel.Background)">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SubColor}"/>
+                                <VisualStateGroup x:Uid="CheckStates" x:Name="CheckStates">
+                                    <VisualState x:Uid="Checked" x:Name="Checked">
+                                        <Storyboard x:Uid="Storyboard_2">
+                                            <ObjectAnimationUsingKeyFrames x:Uid="ObjectAnimationUsingKeyFrames_2" Storyboard.TargetName="DD" Storyboard.TargetProperty="(Panel.Background)">
+                                                <DiscreteObjectKeyFrame x:Uid="DiscreteObjectKeyFrame_2" KeyTime="0" Value="{StaticResource SubColor}"/>
                                             </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DD" Storyboard.TargetProperty="BorderBrush">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SubColor}"/>
+                                            <ObjectAnimationUsingKeyFrames x:Uid="ObjectAnimationUsingKeyFrames_3" Storyboard.TargetName="DD" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame x:Uid="DiscreteObjectKeyFrame_3" KeyTime="0" Value="{StaticResource SubColor}"/>
                                             </ObjectAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
-                                    <VisualState x:Name="Unchecked"/>
-                                    <VisualState x:Name="Indeterminate"/>
+                                    <VisualState x:Uid="Unchecked" x:Name="Unchecked"/>
+                                    <VisualState x:Uid="Indeterminate" x:Name="Indeterminate"/>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
                         </Border>
@@ -51,70 +51,70 @@
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Foreground" Value="{StaticResource SubColor}"/>
+                <Trigger x:Uid="Trigger_1" Property="IsEnabled" Value="False">
+                    <Setter x:Uid="Setter_4" Property="Foreground" Value="{StaticResource SubColor}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style TargetType="ListViewItem">
-            <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
+        <Style x:Uid="Style_3" TargetType="ListViewItem">
+            <Setter x:Uid="Setter_5" Property="Background" Value="{StaticResource BackgroundColor}"/>
         </Style>
-        <Style TargetType="{x:Type ScrollBar}">
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="OverridesDefaultStyle" Value="true" />
-            <Setter Property="Foreground" Value="{StaticResource ForegroundColor}"/>
-            <Setter Property="Background" Value="{StaticResource BackgroundColor}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TextColor}"/>
+        <Style x:Uid="Style_4" TargetType="{x:Type ScrollBar}">
+            <Setter x:Uid="Setter_6" Property="SnapsToDevicePixels" Value="True" />
+            <Setter x:Uid="Setter_7" Property="OverridesDefaultStyle" Value="true" />
+            <Setter x:Uid="Setter_8" Property="Foreground" Value="{StaticResource ForegroundColor}"/>
+            <Setter x:Uid="Setter_9" Property="Background" Value="{StaticResource BackgroundColor}"/>
+            <Setter x:Uid="Setter_10" Property="BorderBrush" Value="{StaticResource TextColor}"/>
             <Style.Triggers>
-                <Trigger Property="Orientation" Value="Horizontal">
-                    <Setter Property="Width" Value="Auto" />
-                    <Setter Property="Height" Value="18" />
-                    <Setter Property="Template" Value="{StaticResource HorizontalScrollBar}"/>
+                <Trigger x:Uid="Trigger_2" Property="Orientation" Value="Horizontal">
+                    <Setter x:Uid="Setter_11" Property="Width" Value="Auto" />
+                    <Setter x:Uid="Setter_12" Property="Height" Value="18" />
+                    <Setter x:Uid="Setter_13" Property="Template" Value="{StaticResource HorizontalScrollBar}"/>
                 </Trigger>
-                <Trigger Property="Orientation" Value="Vertical">
-                    <Setter Property="Width" Value="18" />
-                    <Setter Property="Height" Value="Auto" />
-                    <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
+                <Trigger x:Uid="Trigger_3" Property="Orientation" Value="Vertical">
+                    <Setter x:Uid="Setter_14" Property="Width" Value="18" />
+                    <Setter x:Uid="Setter_15" Property="Height" Value="Auto" />
+                    <Setter x:Uid="Setter_16" Property="Template" Value="{StaticResource VerticalScrollBar}" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
-        <local:ToTimeSpanConverter x:Key="MDConverter"/>
+        <local:ToTimeSpanConverter x:Uid="local:ToTimeSpanConverter_1" x:Key="MDConverter"/>
     </UserControl.Resources>
-    <Grid Background="{StaticResource SubColor}">
+    <Grid x:Uid="Grid_1" Background="{StaticResource SubColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+            <RowDefinition x:Uid="RowDefinition_2" Height="*"/>
+            <RowDefinition x:Uid="RowDefinition_3" Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid x:Uid="Grid_2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition x:Uid="ColumnDefinition_1"/>
+                <ColumnDefinition x:Uid="ColumnDefinition_2"/>
             </Grid.ColumnDefinitions>
-            <ToggleButton x:Name="AlbumTBtn" Style="{StaticResource ModeBtn}" Checked="AlbumTBtn_Checked" Content="Album" Unchecked="AlbumTBtn_Unchecked"/>
-            <ToggleButton x:Name="QueueTbtn" Grid.Column="1" Style="{StaticResource ModeBtn}" Checked="QueueTbtn_Checked" Content="Queue" Unchecked="QueueTbtn_Unchecked"/>
+            <ToggleButton x:Uid="AlbumTBtn" x:Name="AlbumTBtn" Style="{StaticResource ModeBtn}" Checked="AlbumTBtn_Checked" Content="Album" Unchecked="AlbumTBtn_Unchecked"/>
+            <ToggleButton x:Uid="QueueTbtn" x:Name="QueueTbtn" Grid.Column="1" Style="{StaticResource ModeBtn}" Checked="QueueTbtn_Checked" Content="Queue" Unchecked="QueueTbtn_Unchecked"/>
         </Grid>
-        <ListView x:Name="Viewer" Grid.Row="1" Background="{StaticResource SubColor}" BorderBrush="{StaticResource SubColor}" SelectionMode="Single" Padding="1" AllowDrop="True"
+        <ListView x:Uid="Viewer" x:Name="Viewer" Grid.Row="1" Background="{StaticResource SubColor}" BorderBrush="{StaticResource SubColor}" SelectionMode="Single" Padding="1" AllowDrop="True"
                   Drop="Viewer_Drop" PreviewMouseLeftButtonDown="Viewer_PreviewMouseLeftButtonDown" PreviewMouseDoubleClick="Viewer_PreviewMouseDoubleClick">
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
+                <DataTemplate x:Uid="DataTemplate_1">
+                    <Grid x:Uid="Grid_3">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition x:Uid="ColumnDefinition_3" Width="*"/>
+                            <ColumnDefinition x:Uid="ColumnDefinition_4" Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition x:Uid="RowDefinition_4"/>
+                            <RowDefinition x:Uid="RowDefinition_5"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.ColumnSpan="2" Content="{Binding Title}"/>
-                        <Label Grid.Row="1"  Content="{Binding Artist}" Foreground="{StaticResource ForegroundColor}"/>
-                        <Label Grid.Row="1" Grid.Column="1" Content="{Binding Duration, Converter={StaticResource MDConverter}}" Foreground="{StaticResource ForegroundColor}" HorizontalAlignment="Right"/>
+                        <Label x:Uid="Label_1" Grid.ColumnSpan="2" Content="{Binding Title}"/>
+                        <Label x:Uid="Label_2" Grid.Row="1"  Content="{Binding Artist}" Foreground="{StaticResource ForegroundColor}"/>
+                        <Label x:Uid="Label_3" Grid.Row="1" Grid.Column="1" Content="{Binding Duration, Converter={StaticResource MDConverter}}" Foreground="{StaticResource ForegroundColor}" HorizontalAlignment="Right"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Grid.Row="2" IsEnabled="{Binding ElementName=QueueTbtn, Path=IsChecked}" Background="{StaticResource SubColor}" BorderBrush="{StaticResource BackgroundColor}" Foreground="{StaticResource TextColor}" Click="AddButton_Click" Content="Add track"/>
+        <Button x:Uid="Button_1" Grid.Row="2" IsEnabled="{Binding ElementName=QueueTbtn, Path=IsChecked}" Background="{StaticResource SubColor}" BorderBrush="{StaticResource BackgroundColor}" Foreground="{StaticResource TextColor}" Click="AddButton_Click" Content="Add track"/>
     </Grid>
 </UserControl>

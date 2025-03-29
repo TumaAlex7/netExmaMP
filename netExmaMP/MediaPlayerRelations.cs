@@ -70,6 +70,7 @@ namespace netExmaMP
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(!player.HasAudio) return;
             if(player.Position.TotalSeconds > 0) player.Position = TimeSpan.FromSeconds(0);
             else
             {
