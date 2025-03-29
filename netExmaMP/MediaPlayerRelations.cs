@@ -82,7 +82,12 @@ namespace netExmaMP
 
         private void PlayPauseTBtn_Click(object sender, RoutedEventArgs e)
         {
-            switch (PlayPauseTBtn.IsChecked)
+            if (!player.HasAudio)
+            {
+                PlayPauseTBtn.IsChecked = false;
+                return;
+            }
+                switch (PlayPauseTBtn.IsChecked)
             {
                 case true:
                     TimeTB.IsReadOnly = true;
