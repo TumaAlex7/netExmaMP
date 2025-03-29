@@ -19,8 +19,7 @@ namespace netExmaMP
 
     public partial class QueueViewer: UserControl
     {
-        public bool? isLooped;
-        public bool isShuffled;
+        public bool? isLooped = false;
 
         ObservableCollection<Track> album = [];
         ObservableCollection<Track> queue = [];
@@ -189,15 +188,15 @@ namespace netExmaMP
             if (isLooped == null);
             else
             {
-                Viewer.SelectedIndex++;
-                if (Viewer.SelectedIndex == Items.Count) switch (isLooped)
+                if (Viewer.SelectedIndex + 1 == Items.Count) switch (isLooped)
                     {
                         case true:
                             Viewer.SelectedIndex = 0;
                             break;
-                        default:
+                        case false:
                             return null;
                     }
+                else Viewer.SelectedIndex++;
             }
             return Items[Viewer.SelectedIndex].Path;
         }

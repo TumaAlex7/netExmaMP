@@ -166,7 +166,7 @@
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition Width="0.8*" MinWidth="40"/>
                     <ColumnDefinition Width="0.85*"/>
                     <ColumnDefinition Width="0.9*"/>
                     <ColumnDefinition Width="*"/>

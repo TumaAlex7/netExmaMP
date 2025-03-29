@@ -20,6 +20,7 @@ namespace netExmaMP
 
         public void OpenMediaFile(Uri uri)
         {
+            player.Close();
             player.Open(uri);
             PlayPauseTBtn.IsChecked = true;
             TimeTB.IsReadOnly = true;
@@ -48,12 +49,11 @@ namespace netExmaMP
 
         private void Player_MediaEnded(object? sender, EventArgs e)
         {
-            string path = QViewer.GetNextTrack();
-            if (path == null)
-            {
-                timer.Stop();
-                PlayPauseTBtn.IsChecked = false;
-            }
+            player.Stop();
+            timer.Stop();
+            string? path = QViewer.GetNextTrack();
+            PlayPauseTBtn.IsChecked = false;
+            if (path != null) OpenMediaFile(new(path));
         }
 
         private void timer_tick(object sender, EventArgs e)
