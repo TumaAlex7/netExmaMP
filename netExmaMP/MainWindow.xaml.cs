@@ -62,18 +62,19 @@ namespace netExmaMP
                 Color.FromArgb(Properties.Settings.Default.BgColor.A, (byte)(Properties.Settings.Default.BgColor.R + 8), (byte)(Properties.Settings.Default.BgColor.G + 8), (byte)(Properties.Settings.Default.BgColor.B + 8)) :
                 Color.FromArgb(Properties.Settings.Default.BgColor.A, (byte)(Properties.Settings.Default.BgColor.R - 8), (byte)(Properties.Settings.Default.BgColor.G - 8), (byte)(Properties.Settings.Default.BgColor.B - 8)));
             Menu.Foreground = new SolidColorBrush(Properties.Settings.Default.TextColor);
+
         }
 
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             OpenFileDialog dialog = new()
             {
-                Filter = "Media files (*.mp3;*.mpg;*.mpeg)|*.mp3;*.mpg;*.mpeg|All files (*.*)|*.*"
+                Filter = "Media files (*.mp3;*.mpg;*.mpeg)|*.mp3;*.mpg;*.mpeg|All files (*.*)|*.*",
+                Multiselect = true
             };
             if (dialog.ShowDialog() == true)
             {
-                //!!!!
-                OpenMediaFile(new Uri(dialog.FileName, UriKind.Absolute));
+                QViewer.AddTracks(dialog.FileNames);
             }
         }
 

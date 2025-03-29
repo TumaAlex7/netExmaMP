@@ -15,12 +15,9 @@ namespace netExmaMP
 {
     public partial class MainWindow
     {
-        bool? IsLooped = false;
-        bool IsShuffled = false;
-
         double volumeData = 0.5;
 
-        private void OpenMediaFile(Uri uri)
+        public void OpenMediaFile(Uri uri)
         {
             player.Open(uri);
             PlayPauseTBtn.IsChecked = true;
@@ -50,11 +47,11 @@ namespace netExmaMP
 
         private void Player_MediaEnded(object? sender, EventArgs e)
         {
-            switch (IsLooped)
+            string path = QViewer.GetNextTrack();
+            if (path == null)
             {
-                case true:
-                    player.Position = TimeSpan.FromSeconds(0);
-                    break;
+                timer.Stop();
+                PlayPauseTBtn.IsChecked = false;
             }
         }
 
@@ -66,12 +63,17 @@ namespace netExmaMP
 
         private void LoopTBtn_Click(object sender, RoutedEventArgs e)
         {
-            IsLooped = LoopTBtn.IsChecked;
+            QViewer.isLooped = LoopTBtn.IsChecked;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if(player.Position.TotalSeconds > 0) player.Position = TimeSpan.FromSeconds(0);
+            else
+            {
+                string p = QViewer.GetPreviouseTrack();
+                if(p != null) OpenMediaFile(new(p));
+            }
         }
 
         private void PlayPauseTBtn_Click(object sender, RoutedEventArgs e)
