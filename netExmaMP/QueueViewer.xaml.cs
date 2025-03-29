@@ -177,8 +177,10 @@ namespace netExmaMP
 
         public string GetPreviouseTrack()
         {
-            var Items = QueueTbtn.IsChecked == true ? Queue : Album;
+            
+            var Items = QueueTbtn.IsChecked == true ? Queue : Album; 
             Viewer.SelectedIndex--;
+ 
             if(Viewer.SelectedIndex < 0) Viewer.SelectedIndex = 0;
             return Items[Viewer.SelectedIndex].Path;
         }

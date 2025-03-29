@@ -70,7 +70,8 @@ namespace netExmaMP
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(player.Position.TotalSeconds > 0) player.Position = TimeSpan.FromSeconds(0);
+            if (!player.HasAudio) return;
+            if(player.Position.TotalSeconds > 2) player.Position = TimeSpan.FromSeconds(0);
             else
             {
                 string p = QViewer.GetPreviouseTrack();
@@ -95,6 +96,7 @@ namespace netExmaMP
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(!player.HasAudio) return;
             string p = QViewer.GetNextTrack();
             if (p != null) OpenMediaFile(new(p));
         }

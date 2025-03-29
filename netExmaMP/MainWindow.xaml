@@ -181,7 +181,7 @@
                         Style="{StaticResource BackButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="BackBtn_Click"/>
                 <ToggleButton x:Name="PlayPauseTBtn" Grid.Column="3" Margin="1"  Height="{Binding ElementName=PlayPauseTBtn, Path=ActualWidth}"
                         Style="{StaticResource PlayPauseButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" Click="PlayPauseTBtn_Click"/>
-                <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Height="{Binding ElementName=NextBtn, Path=ActualWidth}" IsEnabled="False"
+                <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Height="{Binding ElementName=NextBtn, Path=ActualWidth}"
                         Style="{StaticResource NextButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="NextBtn_Click"/>
                 <Button x:Name="ShuffleBtn" Grid.Column="5" Margin="5" Height="{Binding ElementName=ShuffleBtn, Path=ActualWidth}"
                         Style="{StaticResource ShuffleButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" Click="ShuffleBtn_Click"/>
