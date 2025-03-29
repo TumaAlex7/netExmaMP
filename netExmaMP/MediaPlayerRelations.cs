@@ -65,6 +65,7 @@ namespace netExmaMP
         private void LoopTBtn_Click(object sender, RoutedEventArgs e)
         {
             QViewer.isLooped = LoopTBtn.IsChecked;
+            if (LoopTBtn.IsChecked != false) NextBtn.IsEnabled = true;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

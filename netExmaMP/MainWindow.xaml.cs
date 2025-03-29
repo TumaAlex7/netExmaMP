@@ -132,7 +132,7 @@ namespace netExmaMP
 
         private void NextTrack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            
+            e.CanExecute = NextBtn.IsEnabled;
         }
 
         private void PreviousTrack_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -147,7 +147,7 @@ namespace netExmaMP
 
         private void PreviouseTrack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-
+            e.CanExecute=BackBtn.IsEnabled;
         }
 
         private void IncreaseVolume_Executed(object sender, ExecutedRoutedEventArgs e)

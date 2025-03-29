@@ -69,6 +69,7 @@ namespace netExmaMP
             Track track = new(path);
             if (Queue.Count > 0)
             {
+                (Window.GetWindow(this) as MainWindow).NextBtn.IsEnabled = true;
                 Queue.Add(track);
                 if ((Window.GetWindow(this) as MainWindow).PlayPauseTBtn.IsChecked == false)
                 {
@@ -194,6 +195,7 @@ namespace netExmaMP
                             Viewer.SelectedIndex = 0;
                             break;
                         case false:
+                            (Window.GetWindow(this) as MainWindow).NextBtn.IsEnabled = false;
                             return null;
                     }
                 else Viewer.SelectedIndex++;
