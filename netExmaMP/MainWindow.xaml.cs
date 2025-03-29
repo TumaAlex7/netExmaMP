@@ -63,6 +63,7 @@ namespace netExmaMP
                 Color.FromArgb(Properties.Settings.Default.BgColor.A, (byte)(Properties.Settings.Default.BgColor.R - 8), (byte)(Properties.Settings.Default.BgColor.G - 8), (byte)(Properties.Settings.Default.BgColor.B - 8)));
             Menu.Foreground = new SolidColorBrush(Properties.Settings.Default.TextColor);
 
+            QViewer.LoadSettings();
         }
 
         private void Open_Executed(object sender, ExecutedRoutedEventArgs e)
