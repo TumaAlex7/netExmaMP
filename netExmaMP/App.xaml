@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Styles;component/MediaControlsStyles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Styles;component/SliderStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Styles;component/ScrollBarStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -181,10 +181,10 @@
                         Style="{StaticResource BackButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="BackBtn_Click"/>
                 <ToggleButton x:Name="PlayPauseTBtn" Grid.Column="3" Margin="1"  Height="{Binding ElementName=PlayPauseTBtn, Path=ActualWidth}"
                         Style="{StaticResource PlayPauseButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" Click="PlayPauseTBtn_Click"/>
-                <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Height="{Binding ElementName=NextBtn, Path=ActualWidth}"
+                <Button x:Name="NextBtn" Grid.Column="4" Margin="5" Height="{Binding ElementName=NextBtn, Path=ActualWidth}" IsEnabled="False"
                         Style="{StaticResource NextButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="NextBtn_Click"/>
                 <Button x:Name="ShuffleBtn" Grid.Column="5" Margin="5" Height="{Binding ElementName=ShuffleBtn, Path=ActualWidth}"
-                        Style="{StaticResource ShuffleButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" BorderBrush="{Binding ElementName=Menu, Path=Background}" Click="ShuffleBtn_Click"/>
+                        Style="{StaticResource ShuffleButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" Click="ShuffleBtn_Click"/>
                 <ToggleButton x:Name="VolumeTBtn" Grid.Column="6" Margin="3,3,15,3" Height="{Binding ElementName=VolumeTBtn, Path=ActualWidth}" IsChecked="True"
                         Style="{StaticResource VolumeButtonStyle}" Foreground="{Binding ElementName=Window, Path=Foreground}" Click="VolumeTBtn_Click" MouseEnter="VolumeTBtn_MouseEnter" MouseLeave="VolumeTBtn_MouseLeave"/>
                 <Popup x:Name="VolumePopup" StaysOpen="False" PlacementTarget="{Binding ElementName=VolumeTBtn}" Placement="Right" Height="120" Width="20" MouseLeave="VolumeTBtn_MouseLeave">

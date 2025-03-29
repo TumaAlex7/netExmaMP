@@ -126,17 +126,23 @@ namespace netExmaMP
 
         private void NextTrack_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
+            string p = QViewer.GetNextTrack();
+            if (p != null) OpenMediaFile(new(p));
         }
 
         private void NextTrack_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-
+            
         }
 
         private void PreviousTrack_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-
+            if (player.Position.TotalSeconds > 0) player.Position = TimeSpan.FromSeconds(0);
+            else
+            {
+                string p = QViewer.GetPreviouseTrack();
+                if (p != null) OpenMediaFile(new(p));
+            }
         }
 
         private void PreviouseTrack_CanExecute(object sender, CanExecuteRoutedEventArgs e)

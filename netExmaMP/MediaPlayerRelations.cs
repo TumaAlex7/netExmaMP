@@ -98,7 +98,8 @@ namespace netExmaMP
 
         private void ShuffleBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            string p = QViewer.GetNextTrack();
+            if (p != null) OpenMediaFile(new(p));
         }
 
         private void VolumeTBtn_Click(object sender, RoutedEventArgs e)
