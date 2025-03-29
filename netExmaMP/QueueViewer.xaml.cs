@@ -10,9 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using ATL;
-using ATL.AudioData;
 using Microsoft.Win32;
-using static netExmaMP.QueueViewer;
 
 namespace netExmaMP
 {

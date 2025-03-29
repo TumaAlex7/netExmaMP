@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:netExmaMP"
         mc:Ignorable="d"
         x:Name="Window"
-        Title="MainWindow" Height="400" Width="600" MinHeight="200" MinWidth="500">
+        Title="AudioPlayer" Height="400" Width="600" MinHeight="200" MinWidth="500">
     <Window.Resources>
         <ControlTemplate x:Uid="ControlTemplate_1" x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
             <Border x:Uid="DD" x:Name="DD" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
